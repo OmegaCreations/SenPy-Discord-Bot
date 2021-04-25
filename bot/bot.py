@@ -5,8 +5,8 @@ from discord.ext import commands
 
 class MusicBot(commands.Bot):
     def __init__(self):
-        self._cogs = [p.stem for p in Path(".").glob("./bot/cogs/*.py")]
-        super().__init__(command_prefix=self.prefix, case_insensitive=True, intensts=discord.Intents.all())
+        self._cogs = [p.stem for p in Path(".").glob("./bot/cogs/*.py")] # cogs loading
+        super().__init__(command_prefix=self.prefix, case_insensitive=True, intensts=discord.Intents.all()) # prefix
         
     def setup(self):
         print("Settup running")
@@ -20,7 +20,7 @@ class MusicBot(commands.Bot):
     def run(self):
         self.setup()
         
-        with open("./bot/data/token.0", "r", encoding="UTF-8") as f:
+        with open("./bot/data/token.0", "r", encoding="UTF-8") as f: # token reading
             TOKEN = f.read()
         
         print("Running Bot")
@@ -49,7 +49,7 @@ class MusicBot(commands.Bot):
         print(35*"-")
         
     async def prefix(self, bot, msg):
-        return commands.when_mentioned_or("`")(bot, msg)
+        return commands.when_mentioned_or("`")(bot, msg) # prefix
     
     async def process_commands(self, msg):
         ctx = await self.get_context(msg, cls=commands.Context)
