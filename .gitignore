@@ -125,3 +125,4 @@ dmypy.json
 
 # project stuff
 bot/data/token.0
+/jdk-13.0.2
